@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Version>1.0.0</Version>
+    <Description>Yinyang Utilities Npgsql Samples</Description>
+    <Copyright>Copyright 2023 Yinyang</Copyright>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/yinyangtm/Yinyang.Utilities.Npgsql</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/yinyangtm/Yinyang.Utilities.Npgsql.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Authors>Yinyang.Utilities.Npgsql.Samples</Authors>
+    <PackageId>Yinyang.Utilities.Npgsql.Samples</PackageId>
+    <Product>Yinyang.Utilities.Npgsql.Samples</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.md" Link="LICENSE.md" />
+    <None Include="..\README.md" Link="README.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Yinyang.Utilities.Npgsql\Yinyang.Utilities.Npgsql.csproj" />
+  </ItemGroup>
+
+</Project>
