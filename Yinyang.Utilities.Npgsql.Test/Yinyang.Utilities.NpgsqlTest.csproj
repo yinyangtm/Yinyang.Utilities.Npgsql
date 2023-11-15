@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net472;net48;net481;netstandard2.1;net6;net7</TargetFrameworks>
+    <TargetFrameworks>net472;net48;net481;netstandard2.1;net6;net7;net8</TargetFrameworks>
     <IsPackable>false</IsPackable>
     <UserSecretsId>1b8a729f-8f84-475e-b403-2e63cf3f6d39</UserSecretsId>
   </PropertyGroup>
