@@ -1,5 +1,11 @@
 # Release Notes
 
+
+## v1.0.3 (05/14/2024)
+
+* Update Npgsql version 8.0.3.
+  Fix: SQL Injection (CVE-2024-32655)
+
 ## v1.0.2 (03/16/2024)
 
 * Update Npgsql version 8.0.2.
