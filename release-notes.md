@@ -1,5 +1,9 @@
 # Release Notes
 
+## v1.0.4 (09/15/2024)
+
+* Update Npgsql version 8.0.4.
+  Fix: Denial of Service (DoS) (CVE-2024-30105)
 
 ## v1.0.3 (05/14/2024)
 

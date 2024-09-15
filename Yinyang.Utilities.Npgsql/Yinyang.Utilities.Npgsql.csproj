@@ -4,11 +4,11 @@
     <TargetFrameworks>net472;net48;net481;netstandard2.1;net6;net7;net8</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>This is a wrapper library for Npgsql, which provides a simple way to connect to PostgreSQL Server.</Description>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <Authors>Yinyang</Authors>
     <Product>Yinyang Utilities Npgsql</Product>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-    <Copyright>Copyright 2023 Yinyang</Copyright>
+    <Copyright>Copyright 2024 Yinyang</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/yinyangtm/Yinyang.Utilities.Npgsql</PackageProjectUrl>
     <RepositoryUrl>https://github.com/yinyangtm/Yinyang.Utilities.Npgsql.git</RepositoryUrl>
@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
-    <PackageReference Include="Npgsql" Version="8.0.3" />
+    <PackageReference Include="Npgsql" Version="8.0.4" />
   </ItemGroup>
 
   <ItemGroup>
