@@ -14,21 +14,7 @@ namespace Yinyang.Utilities.Npgsql
         private NpgsqlTransaction _sqlTransaction;
 
         /// <summary>
-        /// Gets or sets the string used to open a PostgreSQL database.
-        /// </summary>
-        public static string ConnectionString { get; set; }
-
-        /// <summary>
-        ///     CommandText
-        /// </summary>
-        public string CommandText
-        {
-            get => _sqlCommand.CommandText;
-            set => _sqlCommand.CommandText = value;
-        }
-
-        /// <summary>
-        ///     Constructor (Use ConnectionString property)
+        ///     Constructor (Use ConnectionString property)
         /// </summary>
         public Pgsql()
         {
@@ -47,8 +33,11 @@ namespace Yinyang.Utilities.Npgsql
         /// <summary>
         ///     Constructor
         /// </summary>
-        /// <param name="connectionString">The connection string that includes the source database name, and other parameters needed to establish the initial connection. The default value is an empty string.</param>
-        public Pgsql(string connectionString)
+        /// <param name="connectionString">
+        ///     The connection string that includes the source database name, and other parameters
+        ///     needed to establish the initial connection. The default value is an empty string.
+        /// </param>
+        public Pgsql(string connectionString)
         {
             _connectionString = connectionString;
 
@@ -58,9 +47,23 @@ namespace Yinyang.Utilities.Npgsql
         }
 
         /// <summary>
-        ///     Dispose
-        /// </summary>
-        public void Dispose()
+        ///     Gets or sets the string used to open a PostgreSQL database.
+        /// </summary>
+        public static string ConnectionString { get; set; }
+
+        /// <summary>
+        ///     CommandText
+        /// </summary>
+        public string CommandText
+        {
+            get => _sqlCommand.CommandText;
+            set => _sqlCommand.CommandText = value;
+        }
+
+        /// <summary>
+        ///     Dispose
+        /// </summary>
+        public void Dispose()
         {
             try
             {
@@ -77,18 +80,18 @@ namespace Yinyang.Utilities.Npgsql
         }
 
         /// <summary>
-        ///     Copy
-        /// </summary>
-        /// <returns></returns>
-        public Pgsql Copy()
+        ///     Copy
+        /// </summary>
+        /// <returns></returns>
+        public Pgsql Copy()
         {
             return new Pgsql(_connectionString);
         }
 
         /// <summary>
-        ///     Opens a database connection with the property settings specified by the ConnectionString.
-        /// </summary>
-        public void Open()
+        ///     Opens a database connection with the property settings specified by the ConnectionString.
+        /// </summary>
+        public void Open()
         {
             _sqlConnection.Open();
         }
@@ -103,20 +106,20 @@ namespace Yinyang.Utilities.Npgsql
         }
 
         /// <summary>
-        ///     Change command type
-        /// </summary>
-        /// <param name="type"></param>
-        public void ChangeCommandType(CommandType type)
+        ///     Change command type
+        /// </summary>
+        /// <param name="type"></param>
+        public void ChangeCommandType(CommandType type)
         {
             _sqlCommand.CommandType = type;
         }
 
         /// <summary>
-        ///     AddParameter
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="obj"></param>
-        public void AddParameter(string key, object obj)
+        ///     AddParameter
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="obj"></param>
+        public void AddParameter(string key, object obj)
         {
             _sqlCommand.Parameters.Add(obj == null
                 ? new NpgsqlParameter(key, DBNull.Value)
@@ -124,7 +127,7 @@ namespace Yinyang.Utilities.Npgsql
         }
 
         /// <summary>
-        ///     AddWithValue
+        ///     AddWithValue
         /// </summary>
         /// <param name="key"></param>
         /// <param name="obj"></param>
@@ -134,18 +137,18 @@ namespace Yinyang.Utilities.Npgsql
         }
 
         /// <summary>
-        ///     Clear parameters
-        /// </summary>
-        public void ClearParameter()
+        ///     Clear parameters
+        /// </summary>
+        public void ClearParameter()
         {
             _sqlCommand.CommandType = CommandType.Text;
             _sqlCommand.Parameters.Clear();
         }
 
         /// <summary>
-        ///     Regenerate NpgsqlCommand
-        /// </summary>
-        public void Refresh()
+        ///     Regenerate NpgsqlCommand
+        /// </summary>
+        public void Refresh()
         {
             _sqlCommand.Dispose();
             _sqlCommand = null;
@@ -157,16 +160,16 @@ namespace Yinyang.Utilities.Npgsql
         }
 
         /// <summary>
-        ///     ExecuteNonQuery
-        /// </summary>
-        /// <returns></returns>
-        public int ExecuteNonQuery()
+        ///     ExecuteNonQuery
+        /// </summary>
+        /// <returns></returns>
+        public int ExecuteNonQuery()
         {
             return _sqlCommand.ExecuteNonQuery();
         }
 
         /// <summary>
-        ///     ExecuteScalar
+        ///     ExecuteScalar
         /// </summary>
         /// <returns></returns>
         public object ExecuteScalar()
@@ -175,10 +178,10 @@ namespace Yinyang.Utilities.Npgsql
         }
 
         /// <summary>
-        ///     ExecuteScalar
-        /// </summary>
-        /// <returns></returns>
-        public int ExecuteScalarToInt()
+        ///     ExecuteScalar
+        /// </summary>
+        /// <returns></returns>
+        public int ExecuteScalarToInt()
         {
             var r = _sqlCommand.ExecuteScalar();
             if (r != null)
@@ -190,7 +193,7 @@ namespace Yinyang.Utilities.Npgsql
         }
 
         /// <summary>
-        /// EasySelect (Auto Open and Close)
+        ///     EasySelect (Auto Open and Close)
         /// </summary>
         /// <typeparam name="T">Entity</typeparam>
         /// <param name="sql">SQL Query (SELECT)</param>
@@ -210,7 +213,7 @@ namespace Yinyang.Utilities.Npgsql
         }
 
         /// <summary>
-        /// EasySelect (Auto Open and Close. used TryExecuteReader)
+        ///     EasySelect (Auto Open and Close. used TryExecuteReader)
         /// </summary>
         /// <typeparam name="T">Entity</typeparam>
         /// <param name="sql">SQL Query (SELECT)</param>
@@ -230,7 +233,7 @@ namespace Yinyang.Utilities.Npgsql
         }
 
         /// <summary>
-        /// ExecuteReaderFirst
+        ///     ExecuteReaderFirst
         /// </summary>
         /// <typeparam name="T">Entity</typeparam>
         /// <returns>First Record</returns>
@@ -254,18 +257,22 @@ namespace Yinyang.Utilities.Npgsql
                             {
                                 continue;
                             }
+
                             prop.SetValue(t, val, null);
                         }
                     }
+
                     break;
                 }
+
                 reader.Close();
             }
+
             return t;
         }
 
         /// <summary>
-        ///     ExecuteReaderFirst (ignore error)
+        ///     ExecuteReaderFirst (ignore error)
         /// </summary>
         /// <typeparam name="T">Entity</typeparam>
         /// <returns>First Record</returns>
@@ -302,8 +309,10 @@ namespace Yinyang.Utilities.Npgsql
                             }
                         }
                     }
+
                     break;
                 }
+
                 reader.Close();
             }
 
@@ -312,10 +321,10 @@ namespace Yinyang.Utilities.Npgsql
         }
 
         /// <summary>
-        ///     ExecuteReader To List
-        /// </summary>
-        /// <typeparam name="T">Entity</typeparam>
-        /// <returns></returns>
+        ///     ExecuteReader To List
+        /// </summary>
+        /// <typeparam name="T">Entity</typeparam>
+        /// <returns></returns>
         public List<T> ExecuteReader<T>() where T : new()
         {
             var res = new List<T>();
@@ -340,15 +349,18 @@ namespace Yinyang.Utilities.Npgsql
                             prop.SetValue(t, val, null);
                         }
                     }
+
                     res.Add(t);
                 }
+
                 reader.Close();
             }
+
             return res;
         }
 
         /// <summary>
-        ///     ExecuteReader To List (ignore error)
+        ///     ExecuteReader To List (ignore error)
         /// </summary>
         /// <typeparam name="T">Entity</typeparam>
         /// <returns></returns>
@@ -384,26 +396,28 @@ namespace Yinyang.Utilities.Npgsql
                             }
                         }
                     }
+
                     res.Add(t);
                 }
+
                 reader.Close();
             }
+
             return res;
         }
 
         /// <summary>
-        ///     SQL IN
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="partialClause"></param>
-        /// <param name="paramPrefix"></param>
-        /// <param name="parameters"></param>
-        /// <returns></returns>
-        public string BuildWhereInClause<T>(string partialClause, string paramPrefix, IEnumerable<T> parameters)
+        ///     SQL IN
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="partialClause"></param>
+        /// <param name="paramPrefix"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public string BuildWhereInClause<T>(string partialClause, string paramPrefix, IEnumerable<T> parameters)
         {
-            var parameterNames = parameters.Select(
-                (paramText, paramNumber) => "@" + paramPrefix + paramNumber)
-              .ToArray();
+            var parameterNames = parameters.Select((paramText, paramNumber) => "@" + paramPrefix + paramNumber)
+                .ToArray();
 
             var inClause = string.Join(",", parameterNames);
             var whereInClause = string.Format(partialClause.Trim(), inClause);
@@ -412,17 +426,16 @@ namespace Yinyang.Utilities.Npgsql
         }
 
         /// <summary>
-        ///     SQL Parameter IN
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="paramPrefix"></param>
-        /// <param name="parameters"></param>
-        public void AddParamsToCommand<T>(string paramPrefix, IEnumerable<T> parameters)
+        ///     SQL Parameter IN
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="paramPrefix"></param>
+        /// <param name="parameters"></param>
+        public void AddParamsToCommand<T>(string paramPrefix, IEnumerable<T> parameters)
         {
             var parameterValues = parameters.Select(paramText => paramText.ToString()).ToArray();
 
-            var parameterNames = parameterValues.Select(
-              (paramText, paramNumber) => "@" + paramPrefix + paramNumber
+            var parameterNames = parameterValues.Select((paramText, paramNumber) => "@" + paramPrefix + paramNumber
             ).ToArray();
 
             for (var i = 0; i < parameterNames.Length; i++)
@@ -432,11 +445,11 @@ namespace Yinyang.Utilities.Npgsql
         }
 
         /// <summary>
-        ///     Table Rows Count
-        /// </summary>
-        /// <param name="tableName">Table Name</param>
-        /// <returns></returns>
-        public int TableRowsCount(string tableName)
+        ///     Table Rows Count
+        /// </summary>
+        /// <param name="tableName">Table Name</param>
+        /// <returns></returns>
+        public int TableRowsCount(string tableName)
         {
             ClearParameter();
             CommandText = $"SELECT COUNT(*) FROM {tableName};";
@@ -447,46 +460,46 @@ namespace Yinyang.Utilities.Npgsql
         #region Transaction
 
         /// <summary>
-        ///     BeginTransaction
-        /// </summary>
-        public void BeginTransaction()
+        ///     BeginTransaction
+        /// </summary>
+        public void BeginTransaction()
         {
             _sqlTransaction = _sqlConnection.BeginTransaction();
             _sqlCommand.Transaction = _sqlTransaction;
         }
 
         /// <summary>
-        ///     BeginTransaction
-        /// </summary>
-        /// <param name="iso"></param>
-        public void BeginTransaction(IsolationLevel iso)
+        ///     BeginTransaction
+        /// </summary>
+        /// <param name="iso"></param>
+        public void BeginTransaction(IsolationLevel iso)
         {
             _sqlTransaction = _sqlConnection.BeginTransaction(iso);
             _sqlCommand.Transaction = _sqlTransaction;
         }
 
         /// <summary>
-        ///     Commit
-        /// </summary>
-        public void Commit()
+        ///     Commit
+        /// </summary>
+        public void Commit()
         {
             _sqlTransaction.Commit();
             TransactionClean();
         }
 
         /// <summary>
-        ///     Rollback
-        /// </summary>
-        public void Rollback()
+        ///     Rollback
+        /// </summary>
+        public void Rollback()
         {
             _sqlTransaction.Rollback();
             TransactionClean();
         }
 
         /// <summary>
-        ///     Transaction Reset
-        /// </summary>
-        private void TransactionClean()
+        ///     Transaction Reset
+        /// </summary>
+        private void TransactionClean()
         {
             _sqlTransaction.Dispose();
             _sqlTransaction = null;

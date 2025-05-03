@@ -16,6 +16,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yinyang.Utilities.NpgsqlTest", "Yinyang.Utilities.Npgsql.Test\Yinyang.Utilities.NpgsqlTest.csproj", "{6488DE2E-3E46-4181-8A04-185252F3DA46}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yinyang.Utilities.Npgsql.Net", "Yinyang.Utilities.Npgsql.Net\Yinyang.Utilities.Npgsql.Net.csproj", "{D9796DAA-724C-4583-BFEF-D2E4FB2FB83A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yinyang.Utilities.Npgsql.NetTest", "Yinyang.Utilities.Npgsql.NetTest\Yinyang.Utilities.Npgsql.NetTest.csproj", "{C5ECFD89-154E-41FA-B098-E527E3EBD603}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +38,14 @@ Global
 		{6488DE2E-3E46-4181-8A04-185252F3DA46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6488DE2E-3E46-4181-8A04-185252F3DA46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6488DE2E-3E46-4181-8A04-185252F3DA46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9796DAA-724C-4583-BFEF-D2E4FB2FB83A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9796DAA-724C-4583-BFEF-D2E4FB2FB83A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9796DAA-724C-4583-BFEF-D2E4FB2FB83A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9796DAA-724C-4583-BFEF-D2E4FB2FB83A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5ECFD89-154E-41FA-B098-E527E3EBD603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5ECFD89-154E-41FA-B098-E527E3EBD603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5ECFD89-154E-41FA-B098-E527E3EBD603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5ECFD89-154E-41FA-B098-E527E3EBD603}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
