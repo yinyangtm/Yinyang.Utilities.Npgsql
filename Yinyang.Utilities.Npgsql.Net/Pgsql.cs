@@ -8,7 +8,7 @@ public class Pgsql : IDisposable
     private readonly string _connectionString;
     private readonly NpgsqlConnection _sqlConnection;
     private NpgsqlCommand _sqlCommand;
-    private NpgsqlTransaction _sqlTransaction;
+    private NpgsqlTransaction? _sqlTransaction;
 
     /// <summary>
     ///     Constructor (Use ConnectionString property)
@@ -46,7 +46,7 @@ public class Pgsql : IDisposable
     /// <summary>
     ///     Gets or sets the string used to open a PostgreSQL database.
     /// </summary>
-    public static string ConnectionString { get; set; }
+    public static string ConnectionString { get; set; } = string.Empty;
 
     /// <summary>
     ///     CommandText
@@ -148,7 +148,6 @@ public class Pgsql : IDisposable
     public void Refresh()
     {
         _sqlCommand.Dispose();
-        _sqlCommand = null;
         _sqlCommand = new NpgsqlCommand { Connection = _sqlConnection };
         if (_sqlTransaction != null)
         {
@@ -169,7 +168,7 @@ public class Pgsql : IDisposable
     ///     ExecuteScalar
     /// </summary>
     /// <returns></returns>
-    public object ExecuteScalar()
+    public object? ExecuteScalar()
     {
         return _sqlCommand.ExecuteScalar();
     }
@@ -183,7 +182,7 @@ public class Pgsql : IDisposable
         var r = _sqlCommand.ExecuteScalar();
         if (r != null)
         {
-            return int.Parse(r.ToString());
+            return int.Parse(r.ToString() ?? "-1");
         }
 
         return -1;
@@ -234,9 +233,9 @@ public class Pgsql : IDisposable
     /// </summary>
     /// <typeparam name="T">Entity</typeparam>
     /// <returns>First Record</returns>
-    public T ExecuteReaderFirst<T>() where T : new()
+    public T? ExecuteReaderFirst<T>() where T : new()
     {
-        T t = default;
+        T? t = default;
         using (var reader = _sqlCommand.ExecuteReader())
         {
             while (reader.Read())
@@ -255,7 +254,7 @@ public class Pgsql : IDisposable
                             continue;
                         }
 
-                        prop.SetValue(t, val, null);
+                        prop?.SetValue(t, val, null);
                     }
                 }
 
@@ -273,9 +272,9 @@ public class Pgsql : IDisposable
     /// </summary>
     /// <typeparam name="T">Entity</typeparam>
     /// <returns>First Record</returns>
-    public T TryExecuteFirst<T>() where T : new()
+    public T? TryExecuteFirst<T>() where T : new()
     {
-        T t = default;
+        T? t = default;
 
         using (var reader = _sqlCommand.ExecuteReader())
         {
@@ -430,14 +429,15 @@ public class Pgsql : IDisposable
     /// <param name="parameters"></param>
     public void AddParamsToCommand<T>(string paramPrefix, IEnumerable<T> parameters)
     {
-        var parameterValues = parameters.Select(paramText => paramText.ToString()).ToArray();
+        var parameterValues = parameters.Select(paramText => paramText?.ToString()).ToArray();
 
         var parameterNames = parameterValues.Select((paramText, paramNumber) => "@" + paramPrefix + paramNumber
         ).ToArray();
 
         for (var i = 0; i < parameterNames.Length; i++)
         {
-            _sqlCommand.Parameters.AddWithValue(parameterNames[i], parameterValues[i]);
+            _sqlCommand.Parameters.AddWithValue(parameterNames[i],
+                parameterValues[i] ?? throw new InvalidOperationException());
         }
     }
 
@@ -480,7 +480,7 @@ public class Pgsql : IDisposable
     /// </summary>
     public void Commit()
     {
-        _sqlTransaction.Commit();
+        _sqlTransaction?.Commit();
         TransactionClean();
     }
 
@@ -489,7 +489,7 @@ public class Pgsql : IDisposable
     /// </summary>
     public void Rollback()
     {
-        _sqlTransaction.Rollback();
+        _sqlTransaction?.Rollback();
         TransactionClean();
     }
 
@@ -498,7 +498,7 @@ public class Pgsql : IDisposable
     /// </summary>
     private void TransactionClean()
     {
-        _sqlTransaction.Dispose();
+        _sqlTransaction?.Dispose();
         _sqlTransaction = null;
         _sqlCommand.Transaction = null;
     }
