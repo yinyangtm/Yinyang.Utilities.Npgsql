@@ -1,7 +1,7 @@
 # Yinyang Utilities Npgsql
 
 [![Yinyang Utilities Npgsql](https://img.shields.io/nuget/v/Yinyang.Utilities.Npgsql.svg)](https://www.nuget.org/packages/Yinyang.Utilities.Npgsql/)
-
+[![Yinyang Utilities Npgsql Net](https://img.shields.io/nuget/v/Yinyang.Utilities.Npgsql.Net.svg)](https://www.nuget.org/packages/Yinyang.Utilities.Npgsql.Net/)
 
 This is a wrapper library for Npgsql, which provides a simple way to connect to PostgreSQL Server.
 
@@ -15,10 +15,13 @@ Install Yinyang Utilities Npgsql nuget package.
 
 NuGet パッケージ マネージャーからインストールしてください。
 
-- [Npgsql](https://www.nuget.org/packages/Yinyang.Utilities.Npgsql/)
+- [Npgsql](https://www.nuget.org/packages/Yinyang.Utilities.Npgsql/) (.NET Framework / .NETStandard)
+- [Npgsql Net](https://www.nuget.org/packages/Yinyang.Utilities.Npgsql.Net/) (.Net 6 or later)
 
 > ```powershell
 > Install-Package Yinyang.Utilities.Npgsql
+> or
+> Install-Package Yinyang.Utilities.Npgsql.Net
 > ```
 
 ---
