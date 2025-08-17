@@ -1,5 +1,9 @@
 # Release Notes
 
+## v1.0.6 (08/17/2025)
+
+* Update Npgsql version 8.0.7.
+
 ## v1.0.5 (11/23/2024)
 
 * Update Npgsql version 8.0.6.
